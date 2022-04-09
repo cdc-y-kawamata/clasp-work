@@ -2,8 +2,8 @@ import { greeter } from "./hello";
 
 describe(greeter.name, () => {
   it("should return greeting", () => {
-    const greeting = greeter("John");
+    const greeting = greeter("Pun");
 
-    expect(greeting).toBe("Hello, John!");
+    expect(greeting).toBe("Hello, Pun!");
   });
 });
