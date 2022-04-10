@@ -1,4 +1,4 @@
-import { greeter } from "./hello";
+/* import { greeter } from ".";
 
 describe(greeter.name, () => {
   it("should return greeting", () => {
@@ -6,4 +6,4 @@ describe(greeter.name, () => {
 
     expect(greeting).toBe("Hello, Pun!");
   });
-});
+}); */
