@@ -1,10 +1,11 @@
 export class ChatWork {
-  baseUrl = "https://api.chatwork.com/v2";
-  apiToken =
+  private baseUrl = "https://api.chatwork.com/v2";
+  private apiToken =
     PropertiesService.getScriptProperties().getProperties()[
       "CHATWORK_API_TOKEN"
     ];
-  roomId = PropertiesService.getScriptProperties().getProperties()["ROOM_ID"];
+  private roomId =
+    PropertiesService.getScriptProperties().getProperties()["ROOM_ID"];
 
   public sendMessage = (
     message: string

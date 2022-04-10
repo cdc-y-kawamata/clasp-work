@@ -1,7 +1,20 @@
 import { ChatWork } from "./chatwork/chatwork";
+import { InquiryForm } from "./form/inquiry-form";
+import { DeviceForm } from "./form/device-form";
 
-export const main = async (e: any) => {
-  await new ChatWork().sendMessage(
-    `${e.namedValues["お問い合わせ種別（選択式）"][0]}\n${e.namedValues["問い合わせ内容"][0]}\n${e.namedValues["タイムスタンプ"][0]}`
-  );
+export const main = (e: any) => {
+  if (!e.namedValues) return;
+  const sheetName = SpreadsheetApp.getActiveSpreadsheet().getName();
+  let body: string;
+
+  if (sheetName === "clasp-work（回答）") {
+    body = new InquiryForm().createBodyText(e.namedValues);
+  } else if (sheetName === "機器レンタル依頼フォーム（回答）") {
+    body = new DeviceForm().createBodyText(e.namedValues);
+  } else {
+    body = "";
+  }
+
+  const result = new ChatWork().sendMessage(body);
+  return JSON.stringify(result.getContentText());
 };
