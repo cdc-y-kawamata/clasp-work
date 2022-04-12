@@ -1,25 +1,18 @@
+import { ConfigConstant } from "../constant";
 export class ChatWork {
-  private baseUrl = "https://api.chatwork.com/v2";
-  private apiToken =
-    PropertiesService.getScriptProperties().getProperties()[
-      "CHATWORK_API_TOKEN"
-    ];
-  private roomId =
-    PropertiesService.getScriptProperties().getProperties()["ROOM_ID"];
+  private readonly baseUrl: string;
+  private readonly apiToken: string;
+  constructor(apiToken: string) {
+    this.baseUrl = ConfigConstant.CHATWORK_BASE_URL;
+    this.apiToken = apiToken;
+  }
 
-  public sendMessage = (
-    message: string
-  ): GoogleAppsScript.URL_Fetch.HTTPResponse => {
+  public sendMessage(roomId: string, message: string): void {
     const options: GoogleAppsScript.URL_Fetch.URLFetchRequestOptions = {
       headers: { "X-ChatWorkToken": this.apiToken },
       method: "post",
       payload: { body: message },
     };
-    const result = UrlFetchApp.fetch(
-      `${this.baseUrl}/rooms/${this.roomId}/messages`,
-      options
-    );
-
-    return JSON.parse(result.getContentText());
-  };
+    UrlFetchApp.fetch(`${this.baseUrl}/rooms/${roomId}/messages`, options);
+  }
 }

@@ -6,3 +6,7 @@ export class FormItem {
   static readonly DEVICE_FORM_START_DATE = "レンタル開始日";
   static readonly DEVICE_FORM_END_DATE = "レンタル終了日";
 }
+
+export class ConfigConstant {
+  static readonly CHATWORK_BASE_URL = "https://api.chatwork.com/v2";
+}

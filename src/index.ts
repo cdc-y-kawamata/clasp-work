@@ -5,16 +5,20 @@ import { DeviceForm } from "./form/device-form";
 export const main = (e: any) => {
   if (!e.namedValues) return;
   const sheetName = SpreadsheetApp.getActiveSpreadsheet().getName();
+  const properties = PropertiesService.getScriptProperties().getProperties();
+  const chatwork = new ChatWork(properties.CHATWORK_API_TOKEN);
+
   let body: string;
-
-  if (sheetName === "clasp-work（回答）") {
-    body = new InquiryForm().createBodyText(e.namedValues);
-  } else if (sheetName === "機器レンタル依頼フォーム（回答）") {
-    body = new DeviceForm().createBodyText(e.namedValues);
-  } else {
-    body = "";
+  switch (sheetName) {
+    case "問い合わせフォーム（回答）":
+      body = new InquiryForm(e.namedValues).createBodyText();
+      chatwork.sendMessage(properties.INQUIRY_ROOM_ID, body);
+      break;
+    case "機器レンタル依頼フォーム（回答）":
+      body = new DeviceForm(e.namedValues).createBodyText();
+      chatwork.sendMessage(properties.DEVICE_ROOM_ID, body);
+      break;
+    default:
+      break;
   }
-
-  const result = new ChatWork().sendMessage(body);
-  return JSON.stringify(result.getContentText());
 };

@@ -4,4 +4,9 @@ module.exports = {
   transform: {
     "^.+\\.ts$": "ts-jest",
   },
+  globals: {
+    SpreadsheetApp: {},
+    PropertiesService: {},
+    UrlFetchApp: {},
+  },
 };
