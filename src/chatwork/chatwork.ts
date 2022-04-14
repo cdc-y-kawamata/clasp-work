@@ -13,6 +13,10 @@ export class ChatWork {
       method: "post",
       payload: { body: message },
     };
-    UrlFetchApp.fetch(`${this.baseUrl}/rooms/${roomId}/messages`, options);
+    const result: GoogleAppsScript.URL_Fetch.HTTPResponse = UrlFetchApp.fetch(
+      `${this.baseUrl}/rooms/${roomId}/messages`,
+      options
+    );
+    if (result.getResponseCode() !== 200) console.log(result.getContentText());
   }
 }
