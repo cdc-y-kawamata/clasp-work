@@ -14,9 +14,10 @@ export class DeviceForm extends BaseForm {
   }
 
   public createBodyText(): string {
-    return this.createBody("機器レンタル申請があります", [
-      this.type,
-      `${this.startDate}〜${this.endDate}`,
-    ]);
+    return this.createBody(
+      "機器レンタル申請があります",
+      [this.type, `${this.startDate}〜${this.endDate}`],
+      0
+    );
   }
 }

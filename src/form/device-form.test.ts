@@ -11,7 +11,7 @@ describe("DeviceForm", () => {
     it("期待通りの結果", () => {
       const text = new DeviceForm(namedValuesMock).createBodyText();
       expect(text).toBe(
-        "機器レンタル申請があります\nスマートフォン\n2022/04/01〜2022/04/30\n2022/04/10 15:00"
+        "機器レンタル申請があります\n[info]スマートフォン[/info]\n2022/04/01〜2022/04/30\n2022/04/10 15:00"
       );
     });
   });

@@ -39,7 +39,7 @@ describe("main", () => {
           headers: { "X-ChatWorkToken": "apiToken" },
           method: "post",
           payload: {
-            body: "お問い合わせがありました\nログインについて\nログインできません\n2022/04/09 15:00",
+            body: "お問い合わせがありました\nログインについて\n[info]ログインできません[/info]\n2022/04/09 15:00",
           },
         }
       );
@@ -70,7 +70,7 @@ describe("main", () => {
           headers: { "X-ChatWorkToken": "apiToken" },
           method: "post",
           payload: {
-            body: "機器レンタル申請があります\nスマートフォン\n2022/04/01〜2022/05/01\n2022/04/09 15:00",
+            body: "機器レンタル申請があります\n[info]スマートフォン[/info]\n2022/04/01〜2022/05/01\n2022/04/09 15:00",
           },
         }
       );

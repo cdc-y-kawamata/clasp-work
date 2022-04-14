@@ -11,6 +11,10 @@ export class InquiryForm extends BaseForm {
   }
 
   public createBodyText(): string {
-    return this.createBody("お問い合わせがありました", [this.type, this.text]);
+    return this.createBody(
+      "お問い合わせがありました",
+      [this.type, this.text],
+      1
+    );
   }
 }

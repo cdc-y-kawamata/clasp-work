@@ -7,6 +7,11 @@ export class FormItem {
   static readonly DEVICE_FORM_END_DATE = "レンタル終了日";
 }
 
+export class SheetName {
+  static readonly INQUIRY_FORM_ANSWER = "問い合わせフォーム（回答）";
+  static readonly DEVICE_FORM_ANSWER = "機器レンタル依頼フォーム（回答）";
+}
+
 export class ConfigConstant {
   static readonly CHATWORK_BASE_URL = "https://api.chatwork.com/v2";
 }
