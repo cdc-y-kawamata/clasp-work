@@ -10,7 +10,7 @@ describe("InquiryForm", () => {
     it("期待通りの結果", () => {
       const text = new InquiryForm(namedValuesMock).createBodyText();
       expect(text).toBe(
-        "お問い合わせがありました\nログインについて\nログインが出来ません\n2022/04/10 15:00"
+        "お問い合わせがありました\nログインについて\n[info]ログインが出来ません[/info]\n2022/04/10 15:00"
       );
     });
   });

@@ -1,6 +1,7 @@
 import { ChatWork } from "./chatwork/chatwork";
 import { InquiryForm } from "./form/inquiry-form";
 import { DeviceForm } from "./form/device-form";
+import { SheetName } from "./constant";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const main = (e: any) => {
@@ -11,11 +12,11 @@ export const main = (e: any) => {
 
   let body: string;
   switch (sheetName) {
-    case "問い合わせフォーム（回答）":
+    case SheetName.INQUIRY_FORM_ANSWER:
       body = new InquiryForm(e.namedValues).createBodyText();
       chatwork.sendMessage(properties.INQUIRY_ROOM_ID, body);
       break;
-    case "機器レンタル依頼フォーム（回答）":
+    case SheetName.DEVICE_FORM_ANSWER:
       body = new DeviceForm(e.namedValues).createBodyText();
       chatwork.sendMessage(properties.DEVICE_ROOM_ID, body);
       break;
