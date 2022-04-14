@@ -10,3 +10,5 @@ export class FormItem {
 export class ConfigConstant {
   static readonly CHATWORK_BASE_URL = "https://api.chatwork.com/v2";
 }
+
+export type FormValues = { [key: string]: string[] };
