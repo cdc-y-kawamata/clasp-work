@@ -1,8 +1,11 @@
 export class BaseForm {
-  timestamp: string | undefined;
+  private readonly timestamp: string;
+  constructor(timestamp: string) {
+    this.timestamp = timestamp;
+  }
 
   createBody(title: string, bodys: string[]): string {
-    bodys.push(this.timestamp ?? "");
+    bodys.push(this.timestamp);
     let text = title + "\n";
     bodys.forEach((body) => {
       text += body + "\n";

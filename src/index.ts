@@ -2,6 +2,7 @@ import { ChatWork } from "./chatwork/chatwork";
 import { InquiryForm } from "./form/inquiry-form";
 import { DeviceForm } from "./form/device-form";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const main = (e: any) => {
   if (!e.namedValues) return;
   const sheetName = SpreadsheetApp.getActiveSpreadsheet().getName();
