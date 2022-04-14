@@ -6,11 +6,24 @@ import { SheetName } from "./constant";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const main = (e: any) => {
   if (!e.namedValues) return;
-  const sheetName = SpreadsheetApp.getActiveSpreadsheet().getName();
-  const properties = PropertiesService.getScriptProperties().getProperties();
-  const chatwork = new ChatWork(properties.CHATWORK_API_TOKEN);
+  let sheetName: string;
+  let properties: { [key: string]: string };
+
+  try {
+    sheetName = SpreadsheetApp.getActiveSpreadsheet().getName();
+    properties = PropertiesService.getScriptProperties().getProperties();
+  } catch (e) {
+    console.log(e);
+  }
+  if (properties) {
+    const chatwork = new ChatWork(properties.CHATWORK_API_TOKEN);
+  }
+
+  // プロパティがない場合
+  // メッセージがない場合
 
   let body: string;
+
   switch (sheetName) {
     case SheetName.INQUIRY_FORM_ANSWER:
       body = new InquiryForm(e.namedValues).createBodyText();
